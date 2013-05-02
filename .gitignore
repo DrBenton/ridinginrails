@@ -1,0 +1,7 @@
+
+# ignore JetBrains files
+.idea/
+
+# ignore Netbeans files
+.nbproject/
+
