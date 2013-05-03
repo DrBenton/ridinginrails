@@ -56,7 +56,15 @@ Ils ne se sont pas arrêté là, d'ailleurs, les bougres. Non, car tout dans l'e
 Ah oui, j'ai oublié de parler de ça. Ruby on Rails a l'air d'être assez ardu à assimiler, même quand on vient de frameworks à peu près équivalents en PHP. Heureusement, pour m'aider à franchir le cap  j'ai vraiment eu l'impression pour le moment que la communauté Ruby était ouverte et plutôt prompte à aider son prochain. Ce qui est toujours agréable lorsqu'on est nouveau venu, et me rassure en cas de pépin si j'ai besoin d'aide. Cela ne veut pas dire pour autant que j'ai été reçu comme un chien galeux dans la communauté PHP ou Node.js, hein :-) Mais celle de Ruby a l'air plutôt sympatoche en tout cas.
 Où en étais-je ? Ah oui, l'esprit-de-partage-de-la-communauté-Ruby, donc. Eh bien oui, il existe un grand nombre de guides et tutoriels pour s'initier à Ruby on Rails, ce qui est plutôt bath.
 
-Une première recherche sur le site officiel de Rails m'a donné ainsi accès aux "guides Rails", en anglais, avec notamment cette mise en jambe qui aborde rapidement les concepts clefs du framework : [Getting started with Rails](http://guides.rubyonrails.org/getting_started.html)
+#### Rails for Zombies
+
+Pour ma part, l'un des éléments qui m'a motivé à tenter cette transition de PHP vers RoR n'est rien d'autre qu'un tutoriel vidéo interactif gratuit. Il n'est disponible qu'en anglais, mais on peut afficher des sous-titres (anglais) pour aider à la compréhension, si besoin est.
+Ce tutoriel est vraiment excellemment fait : on visionne une courte vidéo, puis on nous pose une série de cinq questions, auxquelles on répond par une ou plusieurs lignes de code Ruby. A travers ces vidéos on entraperçoit vraiment le potentiel de Ruby on Rails, et c'est vraiment après avoir fait ce tutoriel "Rails for Zombies" que je me suis dit qu'il **fallait** que je m'y mette :-)
+> http://railsforzombies.org/levels/1
+
+#### Guides officiels
+
+Une fois ce tutoriel vidéo fait, il m'a bien fallu aller chercher quelque chose de plus substantiel. Une première recherche sur le site officiel de Rails m'a donné ainsi accès aux "guides Rails", en anglais, avec notamment cette mise en jambe qui aborde rapidement les concepts clefs du framework : [Getting started with Rails](http://guides.rubyonrails.org/getting_started.html)
 
 Mais puisqu'il y a moult à lire (RoR est **vraiment** un gros framework), et même si je lis pas trop mal l'anglais après toutes ces années à lire des documentations IT, mon cerveau a tout de même une préférence naturelle pour le texte en français lorsqu'il doit ingurgiter une aussi grande quantité d'informations.
 
@@ -78,13 +86,14 @@ _(prenez garde par contre à la licence de ce livre, qui comporte un piège cach
 
 En ce qui vous concerne vous êtes peut-être quelqu'un de bien peu attaché aux cours magistraux, et préférez aller vous frotter tout de suite à du code réel. Le confort douillet de la cheminée en lisant un tutoriel, un verre de bourbon à la main, très peu pour vous. Vous êtes _hot like lava_, et avez envie d'aller voir tout de suite ce que donne Rails utilisé sur des sites en production avec des milliers de pages vues.
 
-Je ne reprendrai pas là la liste des principaux "grands sites" basés sur Rails, que vous pourrez trouver un peu partout, mais si vous voulez voir le code source d'applis Rails "de la vraie vie" je ne peux que vous recommander ces 2 dépôts d'applis Rails Open Source sur GitHub, qui devraient satisfaire votre curiosité :
+Je ne reprendrai pas là la liste des principaux "grands sites" basés sur Rails, que vous pourrez trouver un peu partout, mais si vous voulez voir le code source d'applis Rails "de la vraie vie" je ne peux que vous recommander ces 3 dépôts d'applis Rails Open Source sur GitHub, qui devraient satisfaire votre curiosité :
 
 - le code source de RedMine, excellente application de gestion de projet "à la Basecamp" : [https://github.com/redmine/redmine](https://github.com/redmine/redmine)
 - le code source du site LinuxFr, réalisé par Bruno Michel, directeur technique d'AF83 : [https://github.com/nono/linuxfr.org](https://github.com/nono/linuxfr.org)
+- le code source du site Web de Git : [https://github.com/github/gitscm-next](https://github.com/github/gitscm-next)
 
 Je les ai pas mal parcouru, pour ma part. Et même si je n'ai pas encore tout saisi, je trouve intéressant de voir, au-delà des blogs que proposent les tutoriels, à quoi ressemble du "vrai" code Ruby on Rails.
-Qui plus est, je me dis que je pourrai toujours me reporter à ces 2 codes sources d'applis matures, développées par des pros du RoR, si je me trouve bloqué dans une impasse.
+Qui plus est, je me dis que je pourrai toujours me reporter à ces codes sources d'applis matures, développées par des pros du RoR, si je me trouve bloqué dans une impasse.
 
 ### Aller plus loin avec Rails
 

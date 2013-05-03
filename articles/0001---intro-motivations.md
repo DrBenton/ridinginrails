@@ -84,6 +84,9 @@ Aujourd'hui ces frameworks ont évolué et ont pris chacun leur propre chemin pa
 
 Après toutes ces années où je n'ai pas voulu aller voir à quoi ressemblait ce fameux _Rails_ qui avait donné naissance à tous les frameworks MVC PHP que j'utilisais, je vais donc tenter l'aventure.
 
+L'un des facteurs déclenchants de ma décision a d'ailleurs été un tutoriel vidéo interactif gratuit, très bien fait. Il s'agit de [Rails for Zombies]( http://railsforzombies.org/levels/1), que je ne peux que vous recommander.
+C'est après l'avoir visionné que je me suis dit "_Wow, Ruby on Rails ça a **vraiment** l'air top !_".
+
 #### La syntaxe de Ruby
 
 J'ai longtemps été rebuté par la syntaxe de Ruby, qui s'éloignait tellement de ce que je connaissais qu'elle me paraissait fort laide.
