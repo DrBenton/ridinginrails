@@ -7,7 +7,7 @@ Eh bien me voici à présent au pied du mur. Après avoir [mûrement réfléchi]
 
 Première étape, donc : installer Rails sur ma machine.
 De ce coté c'est très simple. Si vous êtes sous Mac ou Linux (ou si vous passez comme moi par une VM, via Vagrant par exemple), installer Ruby on Rails est à peu près aussi long que taper
-<pre><code>gem install rails</code></pre>
+<pre><code class="language-bash">gem install rails</code></pre>
 Vous l'avez compris si vous avez suivi [le précédent épisode](http://ridinginrails.tumblr.com/post/48605023304/jour-1-sinitier-a-ruby), cela demande tout bêtement au gestionnaire de packages Ruby, Gem, de télécharger et d'installer le package Rails.
 
 Si vous êtes sous Windows avec un environnement Ruby bien configuré, vous pouvez tenter également cette ligne de commande, ça devrait fonctionner j'imagine. Et si vous avez été plus malin que moi et que vous avez installé Ruby via [Rails Installer](http://railsinstaller.org/), comme [on me l'a conseillé dans les commentaires](http://ridinginrails.tumblr.com/post/48605023304/jour-1-sinitier-a-ruby#comment-872560082), vous avez déjà le framework en votre possession.
@@ -18,7 +18,7 @@ Vous souvenez-vous de ce qu'était le développement PHP il y a encore quelques 
 
 C'était rigolo, c'était les joies de l'artisanat, et c'est peut-être comme ça qu'on apprend le mieux à mettre les mains dans le cambouis, lorsqu'on débute.
 Mais si vous avez travaillé avec Zend Framework, Symfony, Laravel, Silex ou n'importe quel autre surcouche PHP "majeure" dernièrement, ce temps de l'artisanat doit comme moi vous sembler bien lointain. En effet, aujourd'hui on ne démarre plus guère de projet PHP _from scratch_, et on utilise bien souvent quelque chose dans ce goût-là pour initialiser un projet :
-<pre><code>composer create-project symfony/framework-standard-edition path/to/install 2.2.0
+<pre><code class="language-bash">composer create-project symfony/framework-standard-edition path/to/install 2.2.0
 </code></pre>
 
 Je ne suis pas spécialiste de l'histoire des nouvelles technologies, et encore moins de celle de Ruby, mais sauf erreur de ma part ces processus-là, très carrés et très sérieux - "industriels", comme on dit aujourd'hui - nous viennent encore une fois de Ruby on Rails.

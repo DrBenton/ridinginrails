@@ -19,7 +19,7 @@ Sam m'a l'air de quelqu'un à qui on peut faire confiance, et étant donné que 
 #### Installation de _rbenv_
 
 Bref, je désinstalle RVM et je suis sagement les consignes d'installation de _rbenv_ (entièrement manuelle, mais au moins je sais ce qui se passe sur ma machine contrairement à RVM), et me voici quelques minutes plus tard avec un Ruby géré par _rbenv_.
-<pre><code>
+<pre><code class="language-bash">
 # désintallation de RVM
 rvm implode
 
@@ -87,20 +87,20 @@ Ce fichier texte, à la racine du projet qui exprime ses dépendances, doit se n
 #### Installation de Bundler
 
 Si vous avez comme moi installé Ruby avec _rbenv_, Bundler n'est malheureusement pas encore présent, et il va nous falloir l'installer. Heureusement c'est très facile, l'utilitaire <code>gem</code> va le faire pour nous :
-<pre><code>gem install bundler
+<pre><code class="language-bash">gem install bundler
 </code></pre>
 
 Si vous n'avez pas installé le plugin _rbenv_ [rbenv-gem-rehash](https://github.com/sstephenson/rbenv-gem-rehash), il faut ensuite :
 
 * soit relancer une session, ce qui est moyennement pratique
-* soit demander explicitement à _rbenv_ de ré-analyser les Gems installées et de créer si besoin est les raccourcis vers les exécutables liées aux différentes Gems. Ceci afin qu'elles soient utilisables en ligne de commande directement : <pre><code>rbenv rehash</code></pre> Il n'est cependant pas forcément très commode de devoir lancer cette commande après chaque installation de Gem, aussi vais-je plutôt installer [rbenv-gem-rehash](https://github.com/sstephenson/rbenv-gem-rehash).
+* soit demander explicitement à _rbenv_ de ré-analyser les Gems installées et de créer si besoin est les raccourcis vers les exécutables liées aux différentes Gems. Ceci afin qu'elles soient utilisables en ligne de commande directement : <pre><code class="language-bash">rbenv rehash</code></pre> Il n'est cependant pas forcément très commode de devoir lancer cette commande après chaque installation de Gem, aussi vais-je plutôt installer [rbenv-gem-rehash](https://github.com/sstephenson/rbenv-gem-rehash).
 
 Une fois cela fait, Bundler est disponible sur notre système, sous la forme d'une commande "<code>bundle</code>".
 
 #### Lancement de Bundler
 
 Je me rends donc dans le répertoire où est installé mon appli RoR, et je demande à Bundler d'aller me télécharger et de m'installer toutes les Gems dont va dépendre mon application Ruby on Rails, telles que décrites dans le fichier Gemfile qui avait été automatiquement créé lors de la génération avec "_rails new [nom du projet]_" :
-<pre><code>cd /home/oliv/_WORK/www/blog/
+<pre><code class="language-bash">cd /home/oliv/_WORK/www/blog/
 bundle install
 </code></pre>
 
@@ -110,12 +110,12 @@ Hop, ni une ni deux, voilà Bundler qui se connecte au dépôt central de Gems, 
 
 Malheureusement la magie s'interrompt brusquement, avec un vilain message d'erreur concernant la Gem [mysql2](http://rubygems.org/gems/mysql2).
 Eh oui, j'ai fait mon malin en choisissant d'utiliser MySQL au lieu du SQLite que me proposait Rails par défaut, et j'avais donc remplacé la Gem "sqlite3" par "mysql2" dans mon "Gemfile" :
-<pre><code>#gem 'sqlite3' # au revoir SQLite...
+<pre><code class="language-ruby">#gem 'sqlite3' # au revoir SQLite...
 gem 'mysql2' # ...bienvenue MySQL</code></pre>
 
 Jusque-là rien de bien litigieux. Mais le soucis, c'est que la Gem "mysql2" qui permet à Ruby de communiquer avec un serveur MySQL nécessite lors de son installation de compiler une partie de son code écrit en C. Et pour que ce code puisse être compilé, il est nécessaire d'avoir sur sa machine le code source C qui permet cette communication avec MySQL.
 Sous Ubuntu, donc, j'ai dû installer le package ad hoc :
-<pre><code>sudo apt-get install libmysqld-dev
+<pre><code class="language-bash">sudo apt-get install libmysqld-dev
 </code></pre>
 
 Une fois cela fait, je relance <code>bundle install</code>, et tout se déroule cette fois comme sur des roulettes.
@@ -127,7 +127,7 @@ Bon, rien de bien méchant non plus : une fois les manips connues c'est en fait 
 
 Allez, je commence tranquillou, avec le serveur Web intégré à Ruby on Rails. Ce serveur, WEBrick, n’a absolument pas vocation à être utilisé en production, mais il est semble-t-il bien utile pour tester son application Rails rapidement.
 Je me rends donc dans le répertoire de mon appli Rails (générée la veille avec "_rails new blog --database=mysql_"), et je lance la commande suivante :
-<pre><code>rails server
+<pre><code class="language-bash">rails server
 </code></pre>
 
 #### Installation d'un moteur JavaScript
@@ -140,7 +140,7 @@ En y regardant de plus près, je repère le coupable : il s'agit de [CoffeeScrip
 
 Pour lancer automatiquement les compilations de mes futurs fichiers CoffeeScript en JavaScript, Ruby va donc demander à un moteur JavaScript de faire le boulot. Pour ce faire c'est la Gem "ExecJS" qui va être appelée à la rescousse, et elle est capable de communiquer avec 5 moteurs JavaScript différents - listé [ici](https://github.com/sstephenson/execjs#readme).
 En ce qui me concerne je ne me suis pas pris la tête, et j'ai tout simplement installé Node.js sur la machine :
-<pre><code>sudo apt-get install nodejs
+<pre><code class="language-bash">sudo apt-get install nodejs
 </code></pre>
 
 #### It's alive!
@@ -165,7 +165,7 @@ A bientôt !
 #### Configuration de la base de données
 
 Mon fichier "config/database.yml" :
-<pre><code>
+<pre><code class="language-yaml">
 development:
   adapter: mysql2
   encoding: utf8
@@ -184,7 +184,7 @@ Dans le cas de l'utilisation de [Vagrant](http://www.vagrantup.com/) : pour que 
 Si comme moi vous utilisez [Vagrant](http://www.vagrantup.com/) pour gérer votre environnement Ruby, vous constaterez peut-être que la machine virtuelle rame fort à chaque fois qu'elle va chercher du contenu sur Internet. C'est bien dommage, puisqu'entre les installations des packages Debian et celles des différentes Gem, j'en ai bien besoin d'Internet.
 
 J'ai trouvé sur le Web les lignes suivantes, à ajouter au fichier "**Vagrantfile**", qui peuvent aider :
-<pre><code>
+<pre><code class="language-ruby">
   config.vm.provider :virtualbox do |vb|
     vb.auto_nat_dns_proxy = false
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
