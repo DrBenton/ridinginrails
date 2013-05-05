@@ -91,6 +91,7 @@ Je ne reprendrai pas là la liste des principaux "grands sites" basés sur Rails
 - le code source de RedMine, excellente application de gestion de projet "à la Basecamp" : [https://github.com/redmine/redmine](https://github.com/redmine/redmine)
 - le code source du site LinuxFr, réalisé par Bruno Michel, directeur technique d'AF83 : [https://github.com/nono/linuxfr.org](https://github.com/nono/linuxfr.org)
 - le code source du site Web de Git : [https://github.com/github/gitscm-next](https://github.com/github/gitscm-next)
+- le code source du site RailsFrance : [https://github.com/railsfrance/railsfrance.org](https://github.com/railsfrance/railsfrance.org)
 
 Je les ai pas mal parcouru, pour ma part. Et même si je n'ai pas encore tout saisi, je trouve intéressant de voir, au-delà des blogs que proposent les tutoriels, à quoi ressemble du "vrai" code Ruby on Rails.
 Qui plus est, je me dis que je pourrai toujours me reporter à ces codes sources d'applis matures, développées par des pros du RoR, si je me trouve bloqué dans une impasse.
