@@ -70,11 +70,14 @@ sudo service apache2 restart</code></pre>
 
 Pour le reste, tout est très bien expliqué dans [la documentation de Phusion Passenger](http://www.modrails.com/documentation/Users%20guide%20Apache.html).  
 Dans mon cas par exemple le site Ruby on Rails sera accessible depuis une "sous-URL" du site PHP, ce qui me donne une addition à mon VHost Apache de ce genre :
-<pre><code>    RackBaseURI /rails 
-    &lt;Directory /vagrant/rails&gt;
+<pre><code class="language-apache2">    RackBaseURI /rails 
+    &lt;Directory /vagrant_php_app/rails&gt;
         RackEnv development # en local je force le mode "development" de Ruby on Rails
         Options -MultiViews
     &lt;/Directory&gt;
+</code></pre>
+Le répertoire "/vagrant/rails" est un lien symbolique vers le dossier "public/" de mon application Ruby on Rails, comme précisé dans la doc de Passenger sur le "[déploiement vers des sous-URI](http://www.modrails.com/documentation/Users%20guide%20Apache.html#deploying_rack_to_sub_uri)" :
+<pre><code class="language-bash">ln -s /vagrant_rails_app/public /vagrant_php_app/rails
 </code></pre>
 
 ### Quand redémarrer le serveur ?
@@ -86,7 +89,7 @@ Chouette alors, grâce à ça on aura donc jamais besoin de redémarrer le serve
 
 #### Parfois malheureusement...
 
-Eh bien si, dans certains cas il le faudra bien. Déjà, lorsqu'on touche à un composant applicatif qui ne relève ni des Contrôleurs, ni des Modèles, ni de la Vue. Par exemple, dès qu'on modifie un initialiseur ou une directive de configuration (et il y a de quoi faire en la matière, comme détaillé [ici](http://guides.rubyonrails.org/configuring.html) par exemple).  
+Eh bien si, dans certains cas il le faudra pourtant bien. Déjà, lorsqu'on touche à un composant applicatif qui ne relève ni des Contrôleurs, ni des Modèles, ni de la Vue. Par exemple, dès qu'on modifie un initialiseur ou une directive de configuration (et il y a de quoi faire en la matière, comme détaillé [ici](http://guides.rubyonrails.org/configuring.html) par exemple).  
 
 Mais aussi dans certains cas que je n'ai pas tout-à-fait saisi. Par exemple, dans un de mes Contrôleurs j'ai un code précédant ma classe, qui fait appel à un composant logiciel que j'ai placé dans le répertoire "lib/" de mon application Rails :
 <pre><code class="language-ruby">
@@ -101,27 +104,28 @@ class MyController &lt;  ApplicationController
     
 end</code></pre>
 
-Si vous avez lu comme moi les dfférents tutos Rails dont je vous parlais, vous voyez qu'ici je fais appel à un module de mon crû, "PhpBridge", qui se trouve dans un "namespace" (en Ruby, un module) nommé pour l'exemple "Acme" afin de respecter la vie privée de mon client.  
+Si vous avez lu comme moi les dfférents tutos Rails dont je vous parlais, vous voyez qu'ici je fais appel à un module de mon crû, "PhpBridge", qui se trouve dans un "namespace" (en Ruby, un module) - nommé pour l'exemple "Acme" afin de respecter la vie privée de mon client :-)  
 J'inclus ce module à mon Contrôleur en tant que _mixin_, comme on le ferait en PHP 5.4+ avec un _Trait_, puis je demande à Rails de lancer la fonction "check_php_bridge" de mon mixin à chaque fois que le Contrôleur doit être déclenché.  
 La première requête HTTP que je lance avec ce code fonctionne très bien, que ce soit avec WEBrick ou Passenger, mais à partir de la deuxième je récolte une vilaine erreur me disant que la route (!) "Acme::Bridge" n'a pas été trouvée. Je n'ai pas d'autre choix alors que de redémarrer le serveur.
 
 Je n'ai pas vraiment compris le pourquoi de ce problème, je l'avoue - même si je me doute que cela doit avoir un rapport avec le fait que RoR va recharger le code de ma classe à chaque requête, puisque je suis en mode _development_, et qu'à partir de ce moment-là le code qui est en-dehors de la classe elle-même (mon "require") n'est plus déclenché comme il faut.
 
-Pour remédier à cela, ne sachant trop que faire puisqu'étant un total néophyte en Rails, j'ai pris le parti de mettre mon "require" dans un _initializer_ Rails, tel que je l'ai vu faire dans le code de LinuxFr, [ici](https://github.com/nono/linuxfr.org/blob/master/config/initializers/require_libs.rb)  
+Pour remédier à cela, ne sachant trop que faire puisqu'étant un total néophyte en Rails, j'ai pris le parti de mettre mon "require" dans un _initializer_ Rails, tel que je l'ai vu faire dans le code de LinuxFr, [ici](https://github.com/nono/linuxfr.org/blob/master/config/initializers/require_libs.rb).  
 (je savais bien que ça me servirait rapidement, d'avoir gardé le code source de ces quelques applis Rails existantes sous le coude :-) .
 
 Seulement maintenant, mon code n'est plus dans aucune des 3 composantes MVC que Rails recharge automatiquement en mode _development_ ! A chaque fois que je modifie mon module "Acme::PhpBridge", donc, je dois redémarrer le serveur.  
-Sous WEBrick, je tue le serveur avec Ctrl+C puis je le relance avec la commande abrégée <code class="language-bash">rails s</code>, et sous Passenger je fais comme on me l'a dit dans la doc :
+Sous WEBrick, je stoppe le serveur avec Ctrl+C puis je le relance avec la commande abrégée <code class="language-bash">rails s</code>, et sous Passenger je fais comme on me l'a dit dans la doc :
 <pre><code class="language-bash">touch tmp/restart.txt #redémarre Passenger 
 </code></pre>
 
-Ce n'est pas très long à faire avec Passenger, heureusement, mais c'est tout de même un peu pénible de devoir faire cela à chaque fois que je vais ajouter ou modifier une classe qui ne fera pas partie des Contrôleurs, du Modèle ou de la Vue.  
-Je pourrai survivre avec cela, mais si un pro du Ruby a un conseil à me donner sur ce point précis je suis preneur :-)
+Ce n'est pas très long à faire, heureusement, mais c'est tout de même un peu pénible de devoir faire cela à chaque fois que je vais ajouter ou modifier une classe qui ne fera pas partie des Contrôleurs, du Modèle ou de la Vue.  
+Je pourrai survivre avec cela, mais **si un pro du Ruby a un conseil à me donner sur ce point précis je suis preneur** :-)
 
 ### Cette fois c'est bel et bien terminé pour l'installation
 
 Voilà, j'ai un environnement Ruby et Ruby on Rails prêt à l'emploi, un Passenger qui va me servir mon appli via Apache, et je crois avoir à peu près compris quand il allait falloir que je redémarre le "serveur Rack" manuellement.  
-A partir du prochain jour, je ne devrais plus avoir à faire qu'à du code Ruby on Rails proprement dit ! Je tâcherai de vous remonter les points qui m'auront surpris, ravi ou posé problème, en tant que développeur venant du monde PHP / Javascript :-)
+
+A partir du prochain jour, je ne devrais plus avoir à faire qu'à du code Ruby on Rails proprement dit ! Je tâcherai de vous remonter les points qui m'auront surpris, ravi ou posé problème, en tant que développeur néophyte Ruby/Rails venant du monde PHP / Javascript :-)
 
 A bientôt !
 
