@@ -4,19 +4,18 @@ Eh bien voici [Ruby](http://ridinginrails.tumblr.com/post/48605023304/jour-1-sin
 
 ### Préambule : remplacement de RVM par rbenv
 
-Au premier jour de mon auto-initiation j'avais cru comprendre en parcourant différentes ressources sur Internet qu'il était de bon ton d'installer Ruby via [RVM](https://rvm.io/). Ce que je fis.
+Au premier jour de mon auto-initiation j'avais cru comprendre en parcourant différentes ressources sur Internet qu'il était de bon ton d'installer Ruby via [RVM](https://rvm.io/). Ce que je fis.  
 Entre-temps des lecteurs avertis m'ont cependant révélé que RVM c'était bien-mais-pas-top. Notamment parce qu'une fois installé, la commande <code>cd</code> (celle-là même qui permet de changer de répertoire) de l'utilisateur est remplacée par une version "RVM-ienne", qui se charge de changer automatiquement la version de Ruby utilisée si on débarque dans un dossier où se trouve un fichier ".rvmrc", comme expliqué [ici](https://rvm.io/workflow/rvmrc/#project). L'idée ne semble pas mauvaise, mais sa mise en pratique via le remplacement d'une commande système aussi essentielle est effectivement sujette à débat.
 
 Et j'avoue par ailleurs - à titre tout-à-fait subjectif - que si cela peut me permettre de ne plus avoir à aller sur le site Web de RVM, dont le design m'arrache une larme chaque fois que j'ai besoin d'aller vérifier un point de la documentation, je signe tout de suite :-)
 
 #### _chruby_, _ry_, _rbenv_...
 
-Il existe plusieurs solutions alternatives assurant peu ou prou la même fonction que RVM, comme les [chruby](https://github.com/postmodern/chruby) et [ry](https://github.com/jayferd/ry) qu'un lecteur m'a conseillés, mais je me suis finalement tourné vers [rbenv](https://github.com/sstephenson/rbenv/).
-Pourquoi celui-ci plutôt qu'un autre, me direz-vous ? Parce qu'il fallait bien faire un choix, et parce que son auteur, Sam Stephenson, bosse chez [37signals](http://37signals.com/) (chez qui Rails a été créé), et qu'il est notamment l'auteur de [Prototype.js](https://github.com/sstephenson/prototype#readme), [eco](https://github.com/sstephenson/eco#readme) ou [Sprockets](https://github.com/sstephenson/sprockets#readme) (l'équivalent _railesque_ d'[Assetic](https://github.com/kriswallsmith/assetic#readme), si vou avez bossé avec Symfony 2), et que je me dis qu'un auteur aussi prolifique et semble-t-il talentueux sait a priori ce qu'il fait.
+Il existe plusieurs solutions alternatives assurant peu ou prou la même fonction que RVM, comme les [chruby](https://github.com/postmodern/chruby) et [ry](https://github.com/jayferd/ry) qu'un lecteur m'a conseillés, mais je me suis finalement tourné vers [rbenv](https://github.com/sstephenson/rbenv/).  
+Pourquoi celui-ci plutôt qu'un autre, me direz-vous ? Parce qu'il fallait bien faire un choix, et parce que son auteur, Sam Stephenson, bosse chez [37signals](http://37signals.com/) (chez qui Rails a été créé), et qu'il est notamment l'auteur de [Prototype.js](https://github.com/sstephenson/prototype#readme), [eco](https://github.com/sstephenson/eco#readme) ou [Sprockets](https://github.com/sstephenson/sprockets#readme) (l'équivalent _railesque_ d'[Assetic](https://github.com/kriswallsmith/assetic#readme), si vou avez bossé avec Symfony 2), et que je me dis qu'un auteur aussi prolifique et semble-t-il talentueux sait a priori ce qu'il fait.  
 Sam m'a l'air de quelqu'un à qui on peut faire confiance, et étant donné que je débute avec Ruby et Rails ça me fait plaisir d'être rassuré.
 
-<a id="rbenv"></a>
-#### Installation de _rbenv_
+#### Installation de _rbenv_ <a id="rbenv"></a>
 
 Bref, je désinstalle RVM et je suis sagement les consignes d'installation de _rbenv_ (entièrement manuelle, mais au moins je sais ce qui se passe sur ma machine contrairement à RVM), et me voici quelques minutes plus tard avec un Ruby géré par _rbenv_.
 <pre><code class="language-bash">
@@ -47,8 +46,6 @@ rbenv install 1.9.3-p392
 rbenv global 1.9.3-p392
 </code></pre>
 
-Désolé pour la coloration syntaxique bugguée, je n'ai pas réussi à obtenir mieux avec [google-code-prettify](https://code.google.com/p/google-code-prettify/)...
-
 #### Ruby 1.9.3 à la place de la 2.0
 
 Vous noterez peut-être au passage que j'ai installé une version **1.9.3** de Ruby, et non la 2.0 que j'avais installée initialement avec RVM.
@@ -67,7 +64,7 @@ Dans un instant de lucidité je me rappelle néanmoins d’une étape que j’ai
 
 #### Gems et Gemfile
 
-Les Gems sont des bibliothèques logicielles Ruby, équivalentes à peu près aux packages PHP que l’on peut trouver sur [Packagist](https://packagist.org/). En Ruby ces bibliothèques sont donc des Gems, et elles sont regroupées sur le bien-nommé site [RubyGems.org](http://rubygems.org/).
+Les Gems sont des bibliothèques logicielles Ruby, équivalentes à peu près aux packages PHP que l’on peut trouver sur [Packagist](https://packagist.org/). En Ruby ces bibliothèques sont donc des Gems, et elles sont regroupées sur le bien-nommé site [RubyGems.org](http://rubygems.org/).  
 Pour les installer d'après les descriptions contenues dans un fichier texte, on a accès à un outil qui lui s’appelle [Bundler](http://gembundler.com/).
 
 Allez, un petit tableau récapitulatif :
@@ -81,7 +78,7 @@ Allez, un petit tableau récapitulatif :
 
 On peut tout-à-fait installer des Gems avec uniquement l'outil en ligne de commande [gem](http://guides.rubygems.org/command-reference/), qui va à la demande télécharger la Gem que vous lui demandez et l'installer sur votre machine.
 
-Mais dès lors que l'on souhaite télécharger et installer plusieurs Gems en une seule fois d'après les indications contenues dans un fichier texte, Bundler (qui est lui-même une Gem) est nécessaire.
+Mais dès lors que l'on souhaite télécharger et installer plusieurs Gems en une seule fois d'après les indications contenues dans un fichier texte, Bundler (qui est lui-même une Gem) est nécessaire.  
 Ce fichier texte, à la racine du projet qui exprime ses dépendances, doit se nommer "**Gemfile**" (équivalent donc de "composer.json" en PHP ou de "package.json" en Node.js).
 
 #### Installation de Bundler
@@ -113,7 +110,7 @@ Eh oui, j'ai fait mon malin en choisissant d'utiliser MySQL au lieu du SQLite qu
 <pre><code class="language-ruby">#gem 'sqlite3' # au revoir SQLite...
 gem 'mysql2' # ...bienvenue MySQL</code></pre>
 
-Jusque-là rien de bien litigieux. Mais le soucis, c'est que la Gem "mysql2" qui permet à Ruby de communiquer avec un serveur MySQL nécessite lors de son installation de compiler une partie de son code écrit en C. Et pour que ce code puisse être compilé, il est nécessaire d'avoir sur sa machine le code source C qui permet cette communication avec MySQL.
+Jusque-là rien de bien litigieux. Mais le soucis, c'est que la Gem "mysql2" qui permet à Ruby de communiquer avec un serveur MySQL nécessite lors de son installation de compiler une partie de son code écrit en C. Et pour que ce code puisse être compilé, il est nécessaire d'avoir sur sa machine le code source C qui permet cette communication avec MySQL.  
 Sous Ubuntu, donc, j'ai dû installer le package ad hoc :
 <pre><code class="language-bash">sudo apt-get install libmysqld-dev
 </code></pre>
@@ -125,20 +122,20 @@ Une fois cela fait, je relance <code>bundle install</code>, et tout se déroule 
 Pfwheee ! Eh bien, je l'aurais mérité mon premier lancement de Ruby on Rails ! :-)
 Bon, rien de bien méchant non plus : une fois les manips connues c'est en fait assez rapide à reproduire, et j'ai pu les refaire en 5 petites minutes sur une nouvelle machine virtuelle.
 
-Allez, je commence tranquillou, avec le serveur Web intégré à Ruby on Rails. Ce serveur, WEBrick, n’a absolument pas vocation à être utilisé en production, mais il est semble-t-il bien utile pour tester son application Rails rapidement.
+Allez, je commence tranquillou, avec le serveur Web intégré à Ruby on Rails. Ce serveur, WEBrick, n’a absolument pas vocation à être utilisé en production, mais il est semble-t-il bien utile pour tester son application Rails rapidement.  
 Je me rends donc dans le répertoire de mon appli Rails (générée la veille avec "_rails new blog --database=mysql_"), et je lance la commande suivante :
 <pre><code class="language-bash">rails server
 </code></pre>
 
 #### Installation d'un moteur JavaScript
 
-Dans mon cas le premier lancement fut un échec cuisant, avec un message d’erreur de 3km. Mais je suis motivé, j'en ai vu d'autres et je ne m'arrête pas là.
-Alors alors, qu'est-ce qu'il y a qui va pas cette fois-ci ? Voyons... Le message d'erreur me parle de la nécessité d'installer... **un moteur JavaScript**.
+Dans mon cas le premier lancement fut un échec cuisant, avec un message d’erreur de 3km. Mais je suis motivé, j'en ai vu d'autres et je ne m'arrête pas là.  
+Alors alors, qu'est-ce qu'il y a qui va pas cette fois-ci ? Voyons... Le message d'erreur me parle de la nécessité d'installer... **un moteur JavaScript**.  
 JavaScript, vous ici ? Diable ! J'aime beaucoup JavaScript, mais je ne pensais pas l'avoir invité sur mon appli Ruby on Rails.
 
 En y regardant de plus près, je repère le coupable : il s'agit de [CoffeeScript](http://coffeescript.org/). Ce bien chouette langage, géré de base par RoR, a originellement été écrit par son auteur en Ruby. Mais aujourd'hui le "transcompilateur" CoffeeScript est lui-même écrit en CoffeeScript, et compilé il nécessite un moteur JavaScript pour mener sa mission à bien.
 
-Pour lancer automatiquement les compilations de mes futurs fichiers CoffeeScript en JavaScript, Ruby va donc demander à un moteur JavaScript de faire le boulot. Pour ce faire c'est la Gem "ExecJS" qui va être appelée à la rescousse, et elle est capable de communiquer avec 5 moteurs JavaScript différents - listé [ici](https://github.com/sstephenson/execjs#readme).
+Pour lancer automatiquement les compilations de mes futurs fichiers CoffeeScript en JavaScript, Ruby va donc demander à un moteur JavaScript de faire le boulot. Pour ce faire c'est la Gem "ExecJS" qui va être appelée à la rescousse, et elle est capable de communiquer avec 5 moteurs JavaScript différents - listé [ici](https://github.com/sstephenson/execjs#readme).  
 En ce qui me concerne je ne me suis pas pris la tête, et j'ai tout simplement installé Node.js sur la machine :
 <pre><code class="language-bash">sudo apt-get install nodejs
 </code></pre>
@@ -154,7 +151,7 @@ Je me rends en HTTP sur ma propre machine, sur le port 3000, et la page d'accuei
 
 Mais le temps passe, ma foi, et je vais clôturer ici-même cet article. Je n'ai pas démérité après tout, avec ma première application Ruby on Rails opérationnelle. Dans le prochain article j'installerai notamment un serveur Web un peu plus balèze que WEBrick, Phusion Passenger.
 
-Je commencerai également, si tout se passe bien, à plancher sur mon premier projet Ruby on Rails.
+Je commencerai également, si tout se passe bien, à plancher sur mon premier projet Ruby on Rails.  
 Car oui, je suis bien content et bien chanceux. A peine ai-je commencé à me mettre à Rails que j'ai pu trouver une mission me permettant de mettre les mains dans le cambouis de manière furieusement concrète. Je suis impatient de voir ce que donne en conditions réelle le développement Ruby on Rails !
 
 A bientôt !
@@ -193,5 +190,5 @@ J'ai trouvé sur le Web les lignes suivantes, à ajouter au fichier "**Vagrantfi
 </code></pre>
 
 Qui plus est, dès qu'on lance WEBrick la communication se fait extrêmement lentement, avec plusieurs secondes de latence entre la demande HTTP et la réponse.
-Cela est apparemment dû à un problème avec VirtualBox, et pour y remédier, j'ai trouvé la solution suivante (précisément [ici](http://stackoverflow.com/questions/1156759/webrick-is-very-slow-to-respond-how-to-speed-it-up#answer-3465134)), qui fonctionne rudement bien : il suffit de passer à <code>true</code> la valeur de la directive <code>:DoNotReverseLookup</code> du fichier de config de WEBrick.
+Cela est apparemment dû à un problème avec VirtualBox, et pour y remédier, j'ai trouvé la solution suivante (précisément [ici](http://stackoverflow.com/questions/1156759/webrick-is-very-slow-to-respond-how-to-speed-it-up#answer-3465134)), qui fonctionne rudement bien : il suffit de passer à <code>true</code> la valeur de la directive <code>:DoNotReverseLookup</code> du fichier de config de WEBrick.  
 (chez moi à l'emplacement _/home/vagrant/.rbenv/versions/1.9.3-p392/lib/ruby/1.9.1/webrick/config.rb_)
