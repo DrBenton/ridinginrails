@@ -11,7 +11,7 @@ J'ai donné vie une première fois à mon application avec le serveur Web intég
 #### WEBrick != production
 
 Mais WEBrick n'est destiné à être utilisé qu'à des fins de tests en local, et il me faudra bien trouver une autre manière de faire vivre RoR sur un site Web réel, en production.  
-Par ailleurs, il se trouve que la réalisation de ma première vraie application RoR va se dérouler dans un contexte un peu particulier, puisque qu'elle devra s'intégrer à un site Web existant, développé en PHP et supporté par une base de données MySQL déjà bien remplie, avec déjà plus de 200 tables au compteur.
+Par ailleurs, il se trouve que la réalisation de ma première vraie application RoR va se dérouler dans un contexte un peu particulier, puisque qu'elle devra s'intégrer à un site Web existant, développé en PHP et connecté à une base de données MySQL déjà bien remplie, avec déjà plus de 200 tables au compteur.
 
 #### Unicorn à la rescousse ?
 
@@ -106,7 +106,7 @@ end</code></pre>
 
 Si vous avez lu comme moi les dfférents tutos Rails dont je vous parlais, vous voyez qu'ici je fais appel à un module de mon crû, "PhpBridge", qui se trouve dans un "namespace" (en Ruby, un module) - nommé pour l'exemple "Acme" afin de respecter la vie privée de mon client :-)  
 J'inclus ce module à mon Contrôleur en tant que _mixin_, comme on le ferait en PHP 5.4+ avec un _Trait_, puis je demande à Rails de lancer la fonction "check_php_bridge" de mon mixin à chaque fois que le Contrôleur doit être déclenché.  
-La première requête HTTP que je lance avec ce code fonctionne très bien, que ce soit avec WEBrick ou Passenger, mais à partir de la deuxième je récolte une vilaine erreur me disant que la route (!) "Acme::Bridge" n'a pas été trouvée. Je n'ai pas d'autre choix alors que de redémarrer le serveur.
+La première requête HTTP que je lance avec ce code fonctionne très bien, que ce soit avec WEBrick ou Passenger, mais à partir de la deuxième je récolte une vilaine erreur me disant que la route (!) "Acme::PhpBridge" n'a pas été trouvée. Je n'ai pas d'autre choix alors que de redémarrer le serveur.
 
 Je n'ai pas vraiment compris le pourquoi de ce problème, je l'avoue - même si je me doute que cela doit avoir un rapport avec le fait que RoR va recharger le code de ma classe à chaque requête, puisque je suis en mode _development_, et qu'à partir de ce moment-là le code qui est en-dehors de la classe elle-même (mon "require") n'est plus déclenché comme il faut.
 
