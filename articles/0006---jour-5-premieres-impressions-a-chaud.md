@@ -143,6 +143,8 @@ Et pour tous les petits détails qui ne sont pas dans les guides, Stack Overflow
 Il reste malgré tout quelques zones d'ombres que je n'ai pas encore pu éclaircir. Par exemple, je n'ai pu trouver nulle part la liste des variables accessibles depuis les Vues Rails (au sein des fichiers de templates ERB par exemple, ou dans les Helpers de Vue). J'ai apparemment accès au Contrôleur via la variable/helper "controller", à son nom avec "controller_name", aux paramètres via "params", etc.  
 Mais c'est en fouillant Stack Overflow que j'ai pu extraire ces quelques informations, et ça m'embête pas mal de devoir ainsi aller à la pêche aux données sans avoir une référence simple me détaillant ce à quoi j'ai accès depuis les Vues.
 
+**EDIT** : un lecteur m'a donné en commentaire de nombreuses "bonnes pratiques" sur la gestion des variables transmises aux Vues. Merci à lui ! Si comme moi vous tâchez de vous mettre à Rails, je ne peux que vous conseiller de lire [ses conseils](http://ridinginrails.tumblr.com/post/50086304620/jour-5-premieres-impressions-a-chaud#comment-892471729).
+
 ### La console Rails, un ami pour la vie
 
 Je finirai ces premières impressions par une très bonne surprise : la console Rails !  
