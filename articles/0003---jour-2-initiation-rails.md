@@ -86,12 +86,13 @@ _(prenez garde par contre à la licence de ce livre, qui comporte un piège cach
 
 En ce qui vous concerne vous êtes peut-être quelqu'un de bien peu attaché aux cours magistraux, et préférez aller vous frotter tout de suite à du code réel. Le confort douillet de la cheminée en lisant un tutoriel, un verre de bourbon à la main, très peu pour vous. Vous êtes _hot like lava_, et avez envie d'aller voir tout de suite ce que donne Rails utilisé sur des sites en production avec des milliers de pages vues.
 
-Je ne reprendrai pas là la liste des principaux "grands sites" basés sur Rails, que vous pourrez trouver un peu partout, mais si vous voulez voir le code source d'applis Rails "de la vraie vie" je ne peux que vous recommander ces 3 dépôts d'applis Rails Open Source sur GitHub, qui devraient satisfaire votre curiosité :
+Je ne reprendrai pas là la liste des principaux "grands sites" basés sur Rails, que vous pourrez trouver un peu partout, mais si vous voulez voir le code source d'applis Rails "de la vraie vie" je ne peux que vous recommander ces quelques dépôts d'applis Rails Open Source sur GitHub, qui devraient satisfaire votre curiosité :
 
 - le code source de RedMine, excellente application de gestion de projet "à la Basecamp" : [https://github.com/redmine/redmine](https://github.com/redmine/redmine)
 - le code source du site LinuxFr, réalisé par Bruno Michel, directeur technique d'AF83 : [https://github.com/nono/linuxfr.org](https://github.com/nono/linuxfr.org)
 - le code source du site Web de Git : [https://github.com/github/gitscm-next](https://github.com/github/gitscm-next)
 - le code source du site RailsFrance : [https://github.com/railsfrance/railsfrance.org](https://github.com/railsfrance/railsfrance.org)
+- le code source de l'application TeaBook Open Reader : [https://github.com/TEA-ebook/teabook-open-reader](https://github.com/TEA-ebook/teabook-open-reader)
 
 Je les ai pas mal parcouru, pour ma part. Et même si je n'ai pas encore tout saisi, je trouve intéressant de voir, au-delà des blogs que proposent les tutoriels, à quoi ressemble du "vrai" code Ruby on Rails.  
 Qui plus est, je me dis que je pourrai toujours me reporter à ces codes sources d'applis matures, développées par des pros du RoR, si je me trouve bloqué dans une impasse.
