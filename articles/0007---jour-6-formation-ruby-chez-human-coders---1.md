@@ -1,6 +1,6 @@
 Bonjour !
 
-Aujourd'hui pas de palpitantes (?) découvertes das mon apprentissage de Rails à raconter ici, puisque je suis revenu aux fondamentaux avec.... une formation Ruby donnée par des pros, j'ai nommé [Human Coders](http://formations.humancoders.com/) !
+Aujourd'hui pas de palpitantes (?) découvertes dans mon apprentissage de Rails à raconter ici, puisque je suis revenu aux fondamentaux avec.... une formation Ruby donnée par des pros, j'ai nommé [Human Coders](http://formations.humancoders.com/) !
 
 Cette première journée était consacrée aux bases du langage, que j'avais déjà pas mal potassées en ce qui me concerne. Aussi connaissais-je déjà sur le papier la plupart des points que nous avons vu ensemble pour ce premier jour.  
 
