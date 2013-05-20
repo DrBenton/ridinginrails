@@ -79,6 +79,14 @@ Pour rendre cette fonctionnalité disponible dans mes Contrôleurs, j'ai ajouté
 require 'acme/php_bridge'
 </code></pre>
 
+**EDIT** : _lors de [ma formation Ruby](http://formations.humancoders.com/formations/ruby) chez Human Coders, j'ai pu lors d'une pause demander  à [Matthieu](https://twitter.com/MatthieuSegret) quelle était la bonne pratique en la matière. Plutôt que de faire manuelle ce "require", donc, il m'a plutôt conseillé d'ajouter la ligne suivante au fichier "config/application.rb" de mon appli Rails. C'est un peu bourrin mais très efficace :-)_
+<pre><code class="language-ruby"># fichier "config/application.rb", aux environs de la ligne 20
+
+# Custom directories with classes and modules you want to be autoloadable.
+config.autoload_paths += %W(#{config.root}/lib)
+</code></pre>
+
+
 Pour utiliser ma fonctionnalité "check_php_bridge", enfin, je n'ai plus qu'à ajouter le code suivant en début de mes Contrôleurs visés :
 <pre><code class="language-ruby">
 class MyController &lt; ApplicationController
