@@ -10,7 +10,7 @@ Mais puisque Rails 3 est livré par défaut avec Sprockets activé (ce ne sera a
 Le premier avantage de Sprockets est de pouvoir utiliser très facilement des surcouches à JavaScript et CSS, sans avoir à configurer quoi que ce soit.  
 
 Concernant JavaScript, il y a encore 2 écoles, et celle de la "surcouche", qu'elle se nomme [CoffeeScript](http://coffeescript.org), [TypeScript](http://www.typescriptlang.org/Playground/), [Dart](http://www.dartlang.org/) ou [que sais-je encore](https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS) est loin d'avoir gagné la bataille.  
-Libre à chacun d'utiliser le "vrai" langage JavaScript ou l'une de ses surcouches. Pour ma part, je suis passé à CoffeeScript il y a un peu plus d'un an, et je trouve que ma productivité y a vraiment gagné.  
+Libre à chacun donc d'utiliser le "vrai" langage JavaScript ou l'une de ses surcouches. Pour ma part, je suis passé à CoffeeScript il y a un peu plus d'un an, et je trouve que ma productivité y a vraiment gagné.  
 
 Pour les feuilles de style en revanche, il semblerait que plus personne aujourd'hui n'utilise encore le langage CSS tel quel. Le succès stratosphérique du kit de démarrage Twitter Boostrap et son utilisation de [LESS](http://lesscss.org/) y sont probablement pour beaucoup.  
 Jusqu'ici j'utilisais LESS, mais puisque [SASS](http://sass-lang.com/) est le choix privilégié des Rubyistes (il est programmé en Ruby :-), qu'il n'est [pas dénué d'avantages](http://www.hongkiat.com/blog/sass-vs-less/) et qu'il est doté de sa propre surcouche sympathique ([Compass](http://compass-style.org/)) je vas donc opter pour SASS.
@@ -172,12 +172,16 @@ Pour y remédier, et également dans l'optique de mieux comprendre les rouages d
 
 #### Création du moteur, et liaison à une extension d'asset
 
-Donner ici le code source du moteur lui-même n'a que peu d'intêret, et ce d'autant plus que le code n'est pas très propre. Si j'en ai le temps plus tard, je le nettoierai et l'empaqueterai sous forme de Gem.  
+Donner ici le code source du moteur lui-même n'a que peu d'intérêt, et ce d'autant plus que le code n'est pas très propre. Si j'en ai le temps plus tard, je le nettoierai et l'empaquetterai sous forme de Gem.  
 Mon propos est plutôt ici de montrer la démarche telle que je l'ai comprise à travers différentes sources sur le Net, afin de faire gagner du temps à ceux nouveau venus sur Rails comme moi qui voudraient aux aussi pouvoir utiliser ce type de mécanisme :
 
 * Je crée le moteur en question, de préférence en le faisant hériter la classe "Titl::Template". Sa méthode "evaluate" sera automatiquement déclenchée par Sprockets le moment venu, avec en paramètre des objets me permettant d'effectuer mon traitement sur le fichier :
 <pre><code class="language-ruby">
 # fichier "lib/acme/sprockets/requirejs_template.rb"
+
+##
+# Based on https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/ejs_template.rb  
+##
 
 require 'tilt'
 
@@ -224,11 +228,11 @@ module Acme
       #
       def evaluate(scope, locals, &block)
         # Ici mon traitement, lui aussi à grands coups d'expressions régulières.
-        # L'intêret est que chaque module va être agrémenté de son identifiant, même lorsque tout
+        # L'intérêt est que chaque module va être agrémenté de son identifiant, même lorsque tout
         # le monde est compacté en un unique fichier JavaScript pour la production, et que les dépendances
         # sont exposées, ce qui évite à RequireJS de les déterminer au runtime.
         #
-        # Ce traitement est effecué à chaque requête en mode "development", mais ne l'est pas
+        # Ce traitement est effectué à chaque requête en mode "development", mais ne l'est pas
         # en mode "production" puisque chaque asset y est pré-généré via la commande
         # "rake assets:precompile".
         #
