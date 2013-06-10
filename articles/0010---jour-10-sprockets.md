@@ -91,7 +91,7 @@ La chaîne de caractères "hé" est un commentaire CoffeeScript, et n'apparaîtr
 
 ### Ajouter son propre moteur
 
-La mode est aux frameworks JavaScript MVC lourds comme Angular, mais je suis déjà en train d'ingurgiter beaucoup de choses avec mon apprentissage de Ruby et de Rails et je ne vais pas m'y mettre tout de suite. Je reste donc pour l'instance sur ce que je pratique depuis quelque temps, à savoir la combinaison [Backbone.js](http://backbonejs.org/) pour le MVC et [RequireJS](http://requirejs.org/) pour la modularité et la gestion automatisée des dépendances.
+La mode est aux frameworks JavaScript MVC lourds comme Angular, mais je suis déjà en train d'ingurgiter beaucoup de choses avec mon apprentissage de Ruby et de Rails et je ne vais pas m'y mettre tout de suite. Je reste donc pour l'instant sur ce que je pratique depuis quelque temps, à savoir la combinaison [Backbone.js](http://backbonejs.org/) pour le MVC et [RequireJS](http://requirejs.org/) pour la modularité et la gestion automatisée des dépendances.
 
 #### Une approche simple : des modules RequireJS chargés à la demande
 
