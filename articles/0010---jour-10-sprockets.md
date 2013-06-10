@@ -267,7 +267,7 @@ Pour finir, quelque chose d'un peu plus trivial mais qui peut servir. SASS étan
 
 Dans mon cas, j'ai besoin de faire référence à une URL externe, celle de l'application PHP avec laquelle je dois interagir, et chez qui je vais piocher certains assets. Plutôt que de mettre cette URL en dur dans mes fichiers CSS, je vais donc créer une nouvelle fonction SASS, reliée à une méthode Ruby :
 
-* Je crée dans mes _initializers_ RoR une classe contenant mes nouveaux _helpers_ SASS :
+* Je crée dans mes _initializers_ RoR un fichier Ruby qui va "ouvrir" la classe existante "Sass::Rails::Helpers" et lui ajouter deux nouvelles méthodes, qui seront autant de nouveaux _helpers_ SASS :
 <pre><code class="language-ruby">
 # fichier "config/initializers/acme_sass_helpers.rb"
 
@@ -305,12 +305,12 @@ C'est simple et bigrement pratique :-)
 
 ### Ma conclusion sur Sprockets
 
-J'ai vu ces fonctionnalités fortement décriées ça et là, ce qui a je pense eu pour conséquence le retrait de Sprockets de la future version 4 de Ruby on Rails : il sera toujours possible de l'utiliser, bien entendu, mais elle ne sera pas incluse et activée par défaut comme c'est le cas avec la version 3.
+J'ai vu les fonctionnalités de Sprockets assez fortement décriées ça et là, ce qui je pense a eu pour conséquence son retrait de la future version 4 de Ruby on Rails : il sera toujours possible de l'utiliser, bien entendu, mais elle ne sera pas incluse et activée par défaut comme c'est le cas avec la version 3.
 
-Pour ma part, j'avoue que conceptuellement je trouve qu'il n'est peut-être pas des plus élégant de trop lier ainsi des fonctionnalités ou des données d'assets à des fonctionnalités Ruby, mais en pratique force est de reconnaître qu'il est bien commode d'avoir un tel couteau suisse sous la main.  
+Pour ma part, j'avoue que même si conceptuellement il n'est peut-être pas des plus élégant de lier ainsi des fonctionnalités ou des données d'assets à des fonctionnalités Ruby, il est en pratique bien commode d'avoir un tel couteau suisse sous la main.  
 
 Mes premiers assets ont d'ailleurs été trop chargés en fonctionnalités ERB ça et là, et je me suis vite aperçu qu'il n'était pas forcément judicieux de coller de l'ERB partout : c'est certes bien tentant, mais il faut résister à l'envie d'en mettre partout afin de conserver une séparation des responsabilités au sein de l'application.  
-Je me suis donc limité à l'utilisation d'ERB dans mes assets pour 2 fichiers JavaScript seulement (la config et l'internationalisation), et pour le reste j'utilise les moteurs Sprockets et la possibilité d'ajouter des fonctionnalités SASS.
+Je me suis donc limité à l'utilisation d'ERB dans mes assets pour 2 fichiers JavaScript seulement (la config et l'internationalisation), et pour le reste j'utilise les moteurs Sprockets et la possibilité d'ajouter des fonctionnalités SASS. Je pense que c'est là un bon équilibre entre praticité, productivité et séparation des couches applicatives.
 
 Même si des gems existent pout utiliser des fonctionnalités comme [Yeoman](http://yeoman.io/) dans Rails, j'ai le sentiment qu'il est préférable de choisir entre un outil comme Yeoman **ou** Sprockets, mais que combiner les 2 peut donner naissance à quelque chose de bien compliqué.  
 
