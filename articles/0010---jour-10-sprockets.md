@@ -310,7 +310,7 @@ Je me suis donc limité à l'utilisation d'ERB dans mes assets pour 2 fichiers J
 
 Même si des gems existent pout utiliser des fonctionnalités comme [Yeoman](http://yeoman.io/) dans Rails, j'ai le sentiment qu'il est préférable de choisir entre un outil comme Yeoman **ou** Sprockets, mais que combiner les 2 peut donner naissance à quelque chose de bien compliqué.  
 
-Dans ce cadre, je ne sais si je continuerai à utiliser Sprockets à l'avenir, mais aujourd'hui il résoud bien mes problématiques et c'est tout ce que je demande à un tel outil.  
+Dans ce cadre, je ne sais si je continuerai à utiliser Sprockets à l'avenir, mais aujourd'hui il résout bien mes problématiques et c'est tout ce que je demande à un tel outil.  
 Je continuerai donc allègrement de lui confier mes assets pour ce premier projet Ruby on Rails ! :-)
 
 
