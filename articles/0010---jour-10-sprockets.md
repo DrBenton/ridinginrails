@@ -222,7 +222,7 @@ module Acme
       #
       # is converted into
       #
-      #   define('my/module/path', ['require', 'exports', 'module' , 'config', 'underscore', 'logger'], function(require, exports, module) {
+      #   define('my/module/path', ['require', 'exports', 'module' , 'config', 'vendor/lodash', 'app/logger'], function(require, exports, module) {
       #     // same function body
       #   }
       #
